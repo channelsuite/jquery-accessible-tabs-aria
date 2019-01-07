@@ -226,15 +226,15 @@ jQuery(document).ready(function($) {
 
                 // catch keyboard event only if focus is on tab
                 if ($focus_on_tab_only && !event.ctrlKey) {
-                    // strike up or left in the tab
-                    if (event.keyCode == 37 || event.keyCode == 38) {
+                    // strike left in the tab
+                    if ( event.keyCode == 37 ) {
 
                         $prev.children(".js-tablist__link").click().focus();
 
                         event.preventDefault();
                     }
-                    // strike down or right in the tab
-                    else if (event.keyCode == 40 || event.keyCode == 39) {
+                    // strike right in the tab
+                    else if ( event.keyCode == 39 ) {
 
                         $next.children(".js-tablist__link").click().focus();
 
