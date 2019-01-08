@@ -150,7 +150,7 @@
             $body.on("click", ".js-tablist__link[aria-disabled='true']", function() {
                 return false;
             });
-            $body.on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event) {
+            $body.on("click", ".js-tablist__link:not([aria-disabled='true'])", function(event, eventOptions) {
                 var $this = $(this),
                     $hash_to_update = $this.attr("aria-controls"),
                     $tab_content_linked = $("#" + $this.attr("aria-controls")),
@@ -179,7 +179,7 @@
                 $tab_content_linked.removeAttr("aria-hidden");
 
                 // add fragment (timeout for transitions)
-                if (tabs_disable_fragments === false) {
+                if (tabs_disable_fragments === false && !(eventOptions && eventOptions.skipPushState)) {
                     setTimeout(function() {
                         history.pushState(null, null, location.pathname + location.search + '#' + $hash_to_update)
                     }, 1000);
